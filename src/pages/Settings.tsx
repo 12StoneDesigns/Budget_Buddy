@@ -15,19 +15,19 @@ const Settings = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="flex-grow container mx-auto p-8 space-y-8 bg-background">
-        <h1 className="text-3xl font-bold mb-8">Settings</h1>
+      <main className="flex-grow container mx-auto p-4 md:p-8 space-y-6 md:space-y-8 bg-background">
+        <h1 className="text-2xl md:text-3xl font-bold mb-4 md:mb-8">Settings</h1>
 
-        <div className="grid gap-8">
+        <div className="grid gap-6 md:gap-8">
           {/* Appearance */}
-          <Card className="p-6">
-            <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+          <Card className="p-4 md:p-6">
+            <h2 className="text-lg md:text-xl font-semibold mb-4 flex items-center gap-2">
               <Moon className="h-5 w-5" />
               Appearance
             </h2>
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <Label htmlFor="dark-mode">Dark Mode</Label>
+                <Label htmlFor="dark-mode" className="flex-grow">Dark Mode</Label>
                 <Switch
                   id="dark-mode"
                   checked={isDarkMode}
@@ -38,8 +38,8 @@ const Settings = () => {
           </Card>
 
           {/* Currency Settings */}
-          <Card className="p-6">
-            <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+          <Card className="p-4 md:p-6">
+            <h2 className="text-lg md:text-xl font-semibold mb-4 flex items-center gap-2">
               <DollarSign className="h-5 w-5" />
               Currency Settings
             </h2>
@@ -62,54 +62,54 @@ const Settings = () => {
           </Card>
 
           {/* Notifications */}
-          <Card className="p-6">
-            <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+          <Card className="p-4 md:p-6">
+            <h2 className="text-lg md:text-xl font-semibold mb-4 flex items-center gap-2">
               <Bell className="h-5 w-5" />
               Notifications
             </h2>
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <Label htmlFor="budget-alerts">Budget Alerts</Label>
+                <Label htmlFor="budget-alerts" className="flex-grow">Budget Alerts</Label>
                 <Switch id="budget-alerts" defaultChecked />
               </div>
               <div className="flex items-center justify-between">
-                <Label htmlFor="payment-reminders">Payment Reminders</Label>
+                <Label htmlFor="payment-reminders" className="flex-grow">Payment Reminders</Label>
                 <Switch id="payment-reminders" defaultChecked />
               </div>
               <div className="flex items-center justify-between">
-                <Label htmlFor="weekly-summary">Weekly Summary</Label>
+                <Label htmlFor="weekly-summary" className="flex-grow">Weekly Summary</Label>
                 <Switch id="weekly-summary" defaultChecked />
               </div>
             </div>
           </Card>
 
           {/* Email Preferences */}
-          <Card className="p-6">
-            <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+          <Card className="p-4 md:p-6">
+            <h2 className="text-lg md:text-xl font-semibold mb-4 flex items-center gap-2">
               <Mail className="h-5 w-5" />
               Email Preferences
             </h2>
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <Label htmlFor="marketing-emails">Marketing Emails</Label>
+                <Label htmlFor="marketing-emails" className="flex-grow">Marketing Emails</Label>
                 <Switch id="marketing-emails" />
               </div>
               <div className="flex items-center justify-between">
-                <Label htmlFor="newsletter">Newsletter</Label>
+                <Label htmlFor="newsletter" className="flex-grow">Newsletter</Label>
                 <Switch id="newsletter" defaultChecked />
               </div>
             </div>
           </Card>
 
           {/* Security */}
-          <Card className="p-6">
-            <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+          <Card className="p-4 md:p-6">
+            <h2 className="text-lg md:text-xl font-semibold mb-4 flex items-center gap-2">
               <Shield className="h-5 w-5" />
               Security
             </h2>
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <Label htmlFor="two-factor">Two-Factor Authentication</Label>
+                <Label htmlFor="two-factor" className="flex-grow">Two-Factor Authentication</Label>
                 <Switch id="two-factor" />
               </div>
               <Button variant="outline" className="w-full">Change Password</Button>
@@ -118,7 +118,7 @@ const Settings = () => {
 
           {/* Save Button */}
           <div className="flex justify-end">
-            <Button className="px-8">Save Changes</Button>
+            <Button className="w-full md:w-auto px-8">Save Changes</Button>
           </div>
         </div>
       </main>
