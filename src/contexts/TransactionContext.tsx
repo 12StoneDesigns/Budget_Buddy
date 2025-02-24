@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, ReactNode } from 'react';
-import { Transaction, calculateDisposableIncome } from '@/lib/transactions';
+import { Transaction, calculateDisposableIncome, calculateMonthlyAmount } from '../lib/transactions';
 
 interface TransactionContextType {
   transactions: Transaction[];
@@ -45,11 +45,11 @@ export const TransactionProvider = ({ children }: { children: ReactNode }) => {
 
   const monthlyIncome = transactions
     .filter(t => t.type === 'income')
-    .reduce((acc, t) => acc + t.amount, 0);
+    .reduce((acc, t) => acc + calculateMonthlyAmount(t.amount, t.frequency), 0);
 
   const monthlyExpenses = transactions
     .filter(t => t.type === 'expense' || t.type === 'bill')
-    .reduce((acc, t) => acc + t.amount, 0);
+    .reduce((acc, t) => acc + calculateMonthlyAmount(t.amount, t.frequency), 0);
 
   const disposableIncome = calculateDisposableIncome(transactions);
 
