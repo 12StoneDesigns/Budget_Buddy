@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 33% 5%;
+    --foreground: 0 0% 100%;
+    --card: 240 25% 11%;
+    --card-foreground: 0 0% 100%;
+    --popover: 240 25% 11%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 186 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 120 100% 54%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 240 25% 20%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 186 100% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 186 100% 50%;
+    --input: 240 25% 11%;
+    --ring: 186 100% 50%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+.card-gradient {
+  background: linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--secondary)/0.1) 100%);
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-neon {
+  animation: neonPulse 2s ease-in-out infinite;
+}
+
+@keyframes neonPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.heading-primary {
+  @apply text-4xl font-extrabold text-secondary tracking-tight;
+  text-shadow: 0 0 10px theme('colors.secondary.DEFAULT');
+}
+
+.heading-secondary {
+  @apply text-3xl text-primary;
+  text-shadow: 0 0 8px theme('colors.primary.DEFAULT');
+}
+
+.neon-card {
+  @apply border border-primary/20 shadow-lg;
+  box-shadow: 0 0 20px theme('colors.primary.DEFAULT / 30%');
+}
+
+.nav-link {
+  @apply text-primary/90 hover:text-primary transition-colors;
+}
+
+.footer-link {
+  @apply text-primary/90 hover:text-secondary mx-2 transition-colors;
+}
+
+.back-link {
+  @apply text-primary hover:text-secondary transition-colors duration-200;
+}
+
+@keyframes logoGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px rgba(0, 243, 255, 0.5));
+  }
+  50% {
+    filter: drop-shadow(0 0 12px rgba(0, 243, 255, 0.8));
+  }
+}
+
+.logo-glow {
+  animation: logoGlow 3s ease-in-out infinite;
+}
+
+.logo-container {
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.logo-container:hover {
+  transform: scale(1.05);
+}
+
+.logo-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(0, 243, 255, 0.2) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: inherit;
+}
+
+.logo-container:hover::after {
+  opacity: 1;
+}
+
+.glow-text {
+  text-shadow: 0 0 15px theme('colors.secondary.DEFAULT');
+  animation: textGlow 2s ease-in-out infinite;
+}
+
+@keyframes textGlow {
+  0%, 100% {
+    text-shadow: 0 0 15px theme('colors.secondary.DEFAULT');
+  }
+  50% {
+    text-shadow: 0 0 25px theme('colors.secondary.DEFAULT');
+  }
+}
+
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transition: opacity 0.3s ease;
+}
+
+button:disabled:hover {
+  background-color: inherit;
+  color: inherit;
+  opacity: 0.8;
+}
+
+@keyframes pulseButton {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.pulse-button {
+  animation: pulseButton 2s infinite;
+}
+
+.data-control-button {
+  @apply bg-card text-primary border border-primary/30 
+         transition-all duration-300 flex items-center gap-2 px-4 py-2.5 rounded-md font-medium
+         hover:bg-primary/10 hover:border-primary;
+  animation: neonBorderPulse 3s infinite;
+}
+
+.data-control-button:hover {
+  box-shadow: 0 0 20px theme('colors.primary.DEFAULT / 40%');
+}
+
+.data-control-button svg {
+  @apply transition-all duration-300;
+}
+
+.data-control-button:hover svg {
+  transform: scale(1.1);
+}
+
+@keyframes neonBorderPulse {
+  0%, 100% {
+    box-shadow: 0 0 5px theme('colors.primary.DEFAULT / 40%'),
+                0 0 10px theme('colors.primary.DEFAULT / 20%');
+  }
+  50% {
+    box-shadow: 0 0 10px theme('colors.primary.DEFAULT / 50%'),
+                0 0 20px theme('colors.primary.DEFAULT / 30%');
+  }
+}
